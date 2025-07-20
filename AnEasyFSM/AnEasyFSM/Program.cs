@@ -54,6 +54,7 @@ var engine = FSMEngineBuilder.Create()
             {
                 build.SetEventBinding(FSMEnum.Next, DemoEvent.Start2DoEvent);
             })
+            .AddConnection(DemoEvent.Start2DoEvent, DemoState.Start, DemoState.Do)
             .AddNode<DoSomething>(DemoState.Do, build =>
             {
                 build.SetEventBinding(FSMEnum.Next, DemoEvent.Do2EndEvent);
@@ -62,8 +63,8 @@ var engine = FSMEngineBuilder.Create()
             {
                 build.SetEventBinding(FSMEnum.Next, DemoEvent.EndEvent);
             })
-            .AddConnection(DemoEvent.Start2DoEvent, DemoState.Start, DemoState.Do)
             .AddConnection(DemoEvent.Do2EndEvent, DemoState.Do, DemoState.End)
+            .Build()
             ;
     })
     .Build();
