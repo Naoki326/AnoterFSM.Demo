@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.3.0" />
-    <PackageReference Include="Naoki.AnotherFSM" Version="1.0.6" />
+    <PackageReference Include="Naoki.AnotherFSM" Version="1.0.10" />
   </ItemGroup>
 
 </Project>

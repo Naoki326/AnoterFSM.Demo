@@ -4,7 +4,7 @@
 // 1. 脚本（默认）
 #define Script
 // 2. 流式API（需要把上面的注释，并打开下面的注释）
-// #define FluentAPI
+//#define FluentAPI
 
 using AnEasyFSM;
 using Autofac;
@@ -18,6 +18,8 @@ builder.RegisterAssemblyModules([Assembly.GetExecutingAssembly(), demoNodesAssem
 // 注册一个AutofacNodeFactory为单例，构造FSMEngine时可选该对象为参数
 builder.RegisterType<AutofacNodeFactory>().As<IFSMNodeFactory>().SingleInstance();
 var container = builder.Build();
+
+FSMExecutor executor = null;
 
 #if Script
 var engine = new FSMEngine(container.Resolve<IFSMNodeFactory>());
@@ -41,6 +43,8 @@ engine.CreateStateMachine(
     }
 """
     );
+
+executor = new FSMExecutor(engine["Start"], engine[(ScriptEvent)"EndEvent"]);
 
 #endif
 
@@ -68,15 +72,17 @@ var engine = FSMEngineBuilder.Create()
             ;
     })
     .Build();
+executor = new FSMExecutor(engine[(ScriptNode)DemoState.Start], engine[(ScriptEvent)DemoEvent.EndEvent]);
 #endif
 
-var executor = new FSMExecutor(engine[(ScriptNode)DemoState.Start], engine[(ScriptEvent)DemoEvent.EndEvent]);
-
+executor.ManualESet = [DebugEnum.DebugDo];
 Console.WriteLine("Start...");
 await executor.RestartAsync();
 
-await Task.Delay(1000);
-await executor.PauseAsync();
+//测试遇到DebugDo的位置会自暂停的功能，所以不需要手动暂停
+//await executor.PauseAsync();
+
+await Task.Delay(10000);
 executor.Continue();
 
 // 等待执行完
@@ -97,4 +103,10 @@ public enum DemoEvent
     Start2DoEvent,
     Do2EndEvent,
     EndEvent,
+}
+
+public enum DebugEnum
+{
+    DebugDo,
+    DebugStep,
 }

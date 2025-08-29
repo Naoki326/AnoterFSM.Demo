@@ -1,5 +1,6 @@
 ﻿using StateMachine;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 namespace AnEasyFSM
 {
     [FSMNode("DoSomething", "做些什么", [1], ["NextEvent"], Id = 6)]
-    internal class DoSomething : AsyncEnumFSMNode
+    internal class DoSomething : AsyncEnumFSMNode<MyData>
     {
-        private async Task Do()
+        private async Task Do(CancellationToken token)
         {
             try
             {
@@ -20,26 +21,30 @@ namespace AnEasyFSM
             catch { }
         }
 
+        public override void InitBeforeStart()
+        {
+            base.InitBeforeStart();
+        }
+
         protected override async IAsyncEnumerable<object> ExecuteEnumerable()
         {
-            await Do();
-
-            yield return Yield.RetryIfFailed(() =>
+            // 仅捕获OperationCanceled异常
+            // 当触发Pause时，Token发出取消请求，此时若Do发出OperationCanceld异常，则进入暂停状态
+            // 此时触发继续后，会自动再次执行Do方法
+            yield return Yield.RetryIfFailed(async () =>
             {
-                Random r = new Random();
-                switch(r.Next(0, 2))
-                {
-                    case 0:
-                        Console.WriteLine("throw and retry...");
-                        throw new Exception();
-                    case 1:
-                        Console.WriteLine("no throw...");
-                        break;
-                }
-                return Task.CompletedTask;
+                await Do(context.Token);
             });
 
+            Console.WriteLine("Before Debug Do");
+
+            yield return Yield.Priority(DebugEnum.DebugDo);
+
+            Console.WriteLine("After Debug Do");
+
             PublishEvent(FSMEnum.Next);
+
+            yield break;
         }
     }
 }
