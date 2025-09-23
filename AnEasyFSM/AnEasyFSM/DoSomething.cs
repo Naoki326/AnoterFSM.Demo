@@ -11,6 +11,8 @@ namespace AnEasyFSM
     [FSMNode("DoSomething", "做些什么", [1], ["NextEvent"], Id = 6)]
     internal class DoSomething : AsyncEnumFSMNode<MyData>
     {
+        public string SomethingOutPut { get; set; }
+
         private async Task Do(CancellationToken token)
         {
             try
@@ -43,6 +45,8 @@ namespace AnEasyFSM
             Console.WriteLine("After Debug Do");
 
             PublishEvent(FSMEnum.Next);
+
+            SomethingOutPut = (Math.Pow(Math.PI, 2)/6).ToString();
 
             yield break;
         }
