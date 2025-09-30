@@ -79,14 +79,16 @@ var engine = FSMEngineBuilder.Create()
 executor = new FSMExecutor(engine[(ScriptNode)DemoState.Start], engine[(ScriptEvent)DemoEvent.EndEvent]);
 #endif
 
-executor.PauseEAnchors = [DebugEnum.DebugDo];
 Console.WriteLine("Start...");
 await executor.RestartAsync();
 
+executor.PauseByAnchor(DebugEnum.DebugDo);
 //测试遇到DebugDo的位置会自暂停的功能，所以不需要手动暂停
 //await executor.PauseAsync();
 
 await Task.Delay(10000);
+Console.WriteLine("Continue...");
+executor.ResetAnchors();
 executor.Continue();
 
 // 等待执行完

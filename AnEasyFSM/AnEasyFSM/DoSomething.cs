@@ -44,7 +44,7 @@ namespace AnEasyFSM
 
             Console.WriteLine("After Debug Do");
 
-            PublishEvent(FSMEnum.Next);
+            yield return Yield.Next;
 
             SomethingOutPut = (Math.Pow(Math.PI, 2)/6).ToString();
 
