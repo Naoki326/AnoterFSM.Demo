@@ -46,6 +46,23 @@ namespace AnEasyFSM
             throw new InvalidOperationException($"No IFSMNode service with key '{name}' found.");
         }
 
+        public string GetNodeName(Type type)
+        {
+            var registration = container.ComponentRegistry.Registrations
+                .FirstOrDefault(r => r.Activator.LimitType == type &&
+                    r.Services.OfType<KeyedService>().Any(s => s.ServiceType == typeof(IFSMNode)));
+
+            if (registration != null)
+            {
+                var keyed = registration.Services.OfType<KeyedService>()
+                    .FirstOrDefault(s => s.ServiceType == typeof(IFSMNode));
+                if (keyed != null)
+                    return keyed.ServiceKey?.ToString() ?? string.Empty;
+            }
+
+            throw new InvalidOperationException($"No IFSMNode service for type '{type.FullName}' found.");
+        }
+
         public IEnumerable<Type> GetNodeTypes()
         {
             return container.ComponentRegistry.Registrations

@@ -8,7 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Naoki.AnotherFSM" Version="1.0.18" />
+    <None Remove="AnEasyScript.FSMScript" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="AnEasyScript.FSMScript" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSMNodeAnalyzer" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FSMScriptAnalyzer" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Naoki.AnotherFSM" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

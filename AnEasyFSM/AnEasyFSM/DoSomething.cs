@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AnEasyFSM
 {
     [FSMNode("DoSomething", "做些什么", [1], ["NextEvent"], Id = 6)]
-    internal class DoSomething : AsyncEnumFSMNode<MyData>
+    public partial class DoSomething : AsyncEnumFSMNode<MyData>
     {
         public string SomethingOutPut { get; set; }
 

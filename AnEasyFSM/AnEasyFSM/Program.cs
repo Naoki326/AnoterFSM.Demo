@@ -2,9 +2,10 @@
 
 // 下面采用两种方式来定义状态机
 // 1. 脚本（默认）
+#define ScriptFile
 //#define Script
 // 2. 流式API（需要把上面的注释，并打开下面的注释）
-#define FluentAPI
+//#define FluentAPI
 
 using AnEasyFSM;
 using Autofac;
@@ -20,6 +21,11 @@ builder.RegisterType<AutofacNodeFactory>().As<IFSMNodeFactory>().SingleInstance(
 var container = builder.Build();
 
 FSMExecutor executor = null;
+
+#if ScriptFile
+AnEasyScript anEasyScript = AnEasyScript.Create(container.Resolve<IFSMNodeFactory>());
+var engine = anEasyScript.Engine;
+#endif
 
 #if Script
 var engine = new FSMEngine(container.Resolve<IFSMNodeFactory>());
@@ -43,8 +49,6 @@ engine.CreateStateMachine(
     }
 """
     );
-
-executor = new FSMExecutor(engine["Start"], engine[(ScriptEvent)"EndEvent"]);
 
 #endif
 
@@ -76,8 +80,10 @@ var engine = FSMEngineBuilder.Create()
             ;
     })
     .Build();
-executor = new FSMExecutor(engine[(ScriptNode)DemoState.Start], engine[(ScriptEvent)DemoEvent.EndEvent]);
+
 #endif
+
+executor = new FSMExecutor(engine[(ScriptNode)DemoState.Start], engine[(ScriptEvent)DemoEvent.EndEvent]);
 
 Console.WriteLine("Start...");
 await executor.RestartAsync();

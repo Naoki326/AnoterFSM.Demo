@@ -77,6 +77,16 @@ namespace AnEasyFSM
             return targetType;
         }
 
+        public string GetNodeName(Type type)
+        {
+            var attribute = type.GetCustomAttribute<FSMNodeAttribute>();
+            if (attribute == null)
+            {
+                throw new ScriptException("State " + type.FullName + " 定义出错, " + "未找到该State！");
+            }
+            return attribute.Key;
+        }
+
         public IEnumerable<Type> GetNodeTypes()
         {
             return [.. assemblies.SelectMany(ass => ass.GetTypes())];
