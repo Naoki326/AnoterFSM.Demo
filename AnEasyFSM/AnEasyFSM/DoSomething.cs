@@ -1,4 +1,4 @@
-﻿using StateMachine;
+using StateMachine;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace AnEasyFSM
 {
+    public enum DebugEnum
+    {
+        DebugDo,
+        DebugStep
+    }
+
     [FSMNode("DoSomething", "做些什么", [1], ["NextEvent"], Id = 6)]
     public partial class DoSomething : AsyncEnumFSMNode<MyData>
     {

@@ -9,11 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.3.0" />
-    <PackageReference Include="FSMNodeAnalyzer" Version="1.1.0">
+    <PackageReference Include="Naoki.AnotherFSM.NodeAnalyzer" Version="1.1.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Naoki.AnotherFSM" Version="1.1.0" />
+    <PackageReference Include="Naoki.AnotherFSM" Version="1.1.6" />
   </ItemGroup>
 
 </Project>

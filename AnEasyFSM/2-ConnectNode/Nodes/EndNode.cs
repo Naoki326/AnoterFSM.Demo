@@ -1,0 +1,20 @@
+﻿using StateMachine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _2_ConnectNode.Nodes
+{
+    public partial class EndNode : BaseFSMNode
+    {
+        protected override async Task ExecuteAsync()
+        {
+            await Task.Delay(1000, Context.Token);
+            Console.WriteLine("FSM End.");
+            PublishEvent(FSMEnum.Next);
+            return;
+        }
+    }
+}

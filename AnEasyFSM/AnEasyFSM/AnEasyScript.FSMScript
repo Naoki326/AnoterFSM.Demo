@@ -1,17 +1,16 @@
+def Start(Start)
+{
+    1 -> Start2DoEvent;
+}
+Start2DoEvent -> Start to Do;
 
-    def Start(Start)
-    {
-        1 -> Start2DoEvent;
-    }
-    Start2DoEvent -> Start to Do;
+def Do(DoSomething)
+{
+    1 -> Do2EndEvent;
+}
+Do2EndEvent -> Do to End;
 
-    def Do(DoSomething)
-    {
-        1 -> Do2EndEvent;
-    }
-    Do2EndEvent -> Do to End;
-
-    def End(End)
-    {
-        1 -> EndEvent;
-    }
+def End(End)
+{
+    1 -> EndEvent;
+}

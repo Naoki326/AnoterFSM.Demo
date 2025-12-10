@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnEasyFSM
+namespace _4_ExecuteFSM
 {
     /// <summary>
     /// 当使用Autofac作为容器时，实现该接口
@@ -61,16 +61,6 @@ namespace AnEasyFSM
             }
 
             throw new InvalidOperationException($"No IFSMNode service for type '{type.FullName}' found.");
-        }
-
-        public IEnumerable<Type> GetNodeTypes()
-        {
-            return container.ComponentRegistry.Registrations
-                .SelectMany(r =>
-                    r.Services.OfType<KeyedService>().Where(s =>
-                        s.ServiceType == typeof(IFSMNode))
-                .Select(s => r.Activator.LimitType))
-                .Distinct();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace AnEasyFSM
             return targetType;
         }
 
-        public string GetNodeName(Type type)
+        public string GetNodeFeatureName(Type type)
         {
             var attribute = type.GetCustomAttribute<FSMNodeAttribute>();
             if (attribute == null)
