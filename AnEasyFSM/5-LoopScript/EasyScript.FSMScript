@@ -1,0 +1,31 @@
+def Start(Start)
+{
+	1 -> Start2Next;
+}
+Start2Next -> Start to Dth;
+
+def Dth(DoSth)
+{
+	1 -> Dth2Next;
+}
+Dth2Next -> Dth to Loop;
+
+def Loop(Loop)
+{
+	1 -> Loop2Next;
+	3 -> Loop2Break;
+}
+Loop2Break -> Loop to Exit;
+Loop2Next -> Loop to DOther;
+
+def DOther(DoSth)
+{
+	1 -> DOther2Next;
+}
+DOther2Next -> DOther to Loop;
+
+
+def Exit(End)
+{
+	1 -> EndEvent;
+}

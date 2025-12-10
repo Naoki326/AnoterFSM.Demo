@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-CreateNodeWithAutofac", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-ExecuteFSM", "4-ExecuteFSM\4-ExecuteFSM.csproj", "{4C7744A6-EF27-4188-B3AF-E8FC6FA0A073}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-LoopScript", "5-LoopScript\5-LoopScript.csproj", "{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{4C7744A6-EF27-4188-B3AF-E8FC6FA0A073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C7744A6-EF27-4188-B3AF-E8FC6FA0A073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C7744A6-EF27-4188-B3AF-E8FC6FA0A073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{5FE13A46-5BC3-45E7-819F-D16F0F69E2D5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{5C275A86-163D-414B-8EFB-E4EFB4A227DA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{4C7744A6-EF27-4188-B3AF-E8FC6FA0A073} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{05233C8E-F513-4CC8-BEE6-CD4BD2173A3C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4984B5ED-E5AA-4C19-A0D8-EFA5EE7AD098}
