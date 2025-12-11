@@ -36,6 +36,7 @@
                            DataInitializer="InitDraw"
                            OnConnectionSelected="ConnectionSelected"
                            OnConnectionUnselected="ConnectionUnselected"
+                           IgnoreTransNodes="@(["Exception"])"
                            NodeTypeNames="@nodeTypes">
         </StateMachineBoard>
         @if (State is not null)

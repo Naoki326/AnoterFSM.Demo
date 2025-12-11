@@ -1,70 +1,93 @@
+def Exception(ExceptionNode)
+{
+	1->Exception2Next;
+	Pos:(11.5, 229);
+    Color: "teal";
+    Type: ExceptionNode;
+    FlowID: 07057c17-fb5a-4aa2-b863-8f1dfa886902;
+}
+
 def Start(Start)
 {
 	1->Start2Next;
+	-1->Any2ExceptionEvent;
 	Pos:(-132.75, 71);
     Color: "red";
     Type: Start;
     FlowID: b2f9420d-6a85-4f8d-be89-397c1e5c115a;
 }
 Start2Next->Start to Dth;
+Any2ExceptionEvent->Start to Exception;
 
 def Dth(DoSth)
 {
 	1->Dth2Next;
+	-1->Any2ExceptionEvent;
 	Pos:(314.75, 229.75);
     Color: "pink";
     Type: DoSth;
     FlowID: 470dbaee-dbd4-478d-80ba-98ab315618b7;
 }
 Dth2Next->Dth to EasyGroup;
+Any2ExceptionEvent->Dth to Exception;
 
 def EasyGroup(EasyGroup)
 {
 	1->EasyGroup2Next;
+	-1->Any2ExceptionEvent2;
 	Pos:(705.75, 345);
     Color: "purple";
     Type: EasyGroup;
     FlowID: ed504961-1706-42c5-92c7-f7cb0e6bc43c;
 }
 EasyGroup2Next->EasyGroup to Exit;
+Any2ExceptionEvent2->EasyGroup to Exception;
 
 def EasyDth(EasyDoSth)
 {
 	1->EasyDth2Next;
+	-1->Any2ExceptionEvent;
 	Pos:(357, 64);
     Color: "blue";
     Type: EasyDoSth;
     FlowID: 9eefded9-ee97-444b-96b4-90fe9c13d666;
 }
 EasyDth2Next->EasyDth to Loop;
+Any2ExceptionEvent->EasyDth to Exception;
 
 def Loop(Loop)
 {
 	1->Loop2Next;
 	3->LoopEnd;
+	-1->Any2ExceptionEvent;
 	Pos:(697.25, 45);
     Color: "cyan";
     Type: Loop;
     FlowID: cc927ebd-edab-4c50-80f1-48178066f364;
 }
 Loop2Next->Loop to EasyDOther;
+Any2ExceptionEvent->Loop to Exception;
 
 def EasyDOther(EasyDoSth)
 {
 	1->DOther2Next;
+	-1->Any2ExceptionEvent;
 	Pos:(947, 270.25);
     Color: "indigo";
     Type: EasyDoSth;
     FlowID: d6516fe7-76dc-4340-b484-316a467c47d8;
 }
 DOther2Next->EasyDOther to Loop;
+Any2ExceptionEvent->EasyDOther to Exception;
 
 def Exit(End)
 {
 	1->EndEvent;
+	-1->Any2ExceptionEvent;
 	Pos:(1067.25, 359.75);
     Color: "green";
     Type: End;
     FlowID: 3def05b9-5927-4b9e-a341-fd5d7337e172;
 }
+Any2ExceptionEvent->Exit to Exception;
 

@@ -15,6 +15,14 @@ namespace _6_AdditionalFunction.Nodes
         {
             Console.WriteLine("Do Something easy...");
             yield return Yield.Delay(500);
+
+            Random rd = new Random();
+            int r = rd.Next(2);
+            if(r > 0)
+            {
+                throw new Exception();
+            }
+
             Console.WriteLine(Context.Data.EasyMessage);
             yield return Yield.Delay(500);
             yield return Yield.Next;

@@ -153,5 +153,15 @@ namespace StateMachineDemoShared.Pages
                 await executor.StopAsync();
             }
         }
+
+        public async Task Retry()
+        {
+            if (executor is not null)
+            {
+                var lastNodeName = (pv.Engine[(ScriptNode)"Exception"] as ExceptionNode).LastNode;
+                pv.Engine.ForceConnectNode("FallBackEvent", "Exception", lastNodeName);
+                pv.Engine.PublishEvent("FallBackEvent");
+            }
+        }
     }
 }

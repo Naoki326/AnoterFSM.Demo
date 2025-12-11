@@ -173,6 +173,7 @@ namespace StateMachine
             return GetFlowIndex(flowId).ToString();
         }
 
+        [Parameter] public List<string> IgnoreTransNodes { get; set; }
 
         private async Task CreateFromEngine()
         {
@@ -203,10 +204,18 @@ namespace StateMachine
 
             foreach (string stateName in engine.GetNodeNames())
             {
+                if (IgnoreTransNodes is not null && IgnoreTransNodes.Contains(stateName))
+                {
+                    continue;
+                }
                 var state = engine[stateName];
                 state.UpdateEventDescriptions();
                 foreach (var transition in state.GetFSMTransitions())
                 {
+                    if (IgnoreTransNodes is not null && IgnoreTransNodes.Contains(transition.Target.Name))
+                    {
+                        continue;
+                    }
                     if (await _drawflow.GetNodesFromNameAsync(transition.Target.Name) is List<int> nodeInputs
                         && await _drawflow.GetNodesFromNameAsync(transition.Source.Name) is List<int> nodeOutputs)
                     {
