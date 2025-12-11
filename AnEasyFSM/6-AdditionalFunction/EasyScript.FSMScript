@@ -1,0 +1,70 @@
+def Start(Start)
+{
+	1->Start2Next;
+	Pos:(-132.75, 71);
+    Color: "red";
+    Type: Start;
+    FlowID: b2f9420d-6a85-4f8d-be89-397c1e5c115a;
+}
+Start2Next->Start to Dth;
+
+def Dth(DoSth)
+{
+	1->Dth2Next;
+	Pos:(314.75, 229.75);
+    Color: "pink";
+    Type: DoSth;
+    FlowID: 470dbaee-dbd4-478d-80ba-98ab315618b7;
+}
+Dth2Next->Dth to EasyGroup;
+
+def EasyGroup(EasyGroup)
+{
+	1->EasyGroup2Next;
+	Pos:(705.75, 345);
+    Color: "purple";
+    Type: EasyGroup;
+    FlowID: ed504961-1706-42c5-92c7-f7cb0e6bc43c;
+}
+EasyGroup2Next->EasyGroup to Exit;
+
+def EasyDth(EasyDoSth)
+{
+	1->EasyDth2Next;
+	Pos:(357, 64);
+    Color: "blue";
+    Type: EasyDoSth;
+    FlowID: 9eefded9-ee97-444b-96b4-90fe9c13d666;
+}
+EasyDth2Next->EasyDth to Loop;
+
+def Loop(Loop)
+{
+	1->Loop2Next;
+	3->LoopEnd;
+	Pos:(697.25, 45);
+    Color: "cyan";
+    Type: Loop;
+    FlowID: cc927ebd-edab-4c50-80f1-48178066f364;
+}
+Loop2Next->Loop to EasyDOther;
+
+def EasyDOther(EasyDoSth)
+{
+	1->DOther2Next;
+	Pos:(947, 270.25);
+    Color: "indigo";
+    Type: EasyDoSth;
+    FlowID: d6516fe7-76dc-4340-b484-316a467c47d8;
+}
+DOther2Next->EasyDOther to Loop;
+
+def Exit(End)
+{
+	1->EndEvent;
+	Pos:(1067.25, 359.75);
+    Color: "green";
+    Type: End;
+    FlowID: 3def05b9-5927-4b9e-a341-fd5d7337e172;
+}
+
