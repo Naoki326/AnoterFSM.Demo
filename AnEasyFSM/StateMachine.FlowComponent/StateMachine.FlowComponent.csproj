@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Naoki.AnotherFSM" Version="1.1.6" />
+    <PackageReference Include="Naoki.AnotherFSM" Version="1.1.7" />
   </ItemGroup>
 
   <ItemGroup>

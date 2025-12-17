@@ -27,7 +27,7 @@ namespace _6_AdditionalFunction.Nodes
 
         public string LastNode => ExecuterContext.LastNodeName;
 
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             Debugger.Launch();
             //Debugger.Break();

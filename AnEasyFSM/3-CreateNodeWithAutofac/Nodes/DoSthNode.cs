@@ -10,7 +10,7 @@ namespace _3_CreateNodeWithAutofac.Nodes
     [FSMNode("DoSth")]
     public partial class DoSthNode : AsyncEnumFSMNode
     {
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             Console.WriteLine("Do Something...");
             yield return Yield.Next;

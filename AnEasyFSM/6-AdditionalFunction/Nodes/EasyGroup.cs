@@ -15,7 +15,7 @@ namespace _6_AdditionalFunction.Nodes
             base.InitBeforeStart();
         }
 
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             ContextData = new EasyContext() { EasyMessage = "Context changed." };
 

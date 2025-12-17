@@ -7,7 +7,7 @@
         {
         }
 
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             yield return Yield.None;
             try

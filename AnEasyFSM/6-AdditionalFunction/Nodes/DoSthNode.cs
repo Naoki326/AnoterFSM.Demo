@@ -11,7 +11,7 @@ namespace _6_AdditionalFunction.Nodes
     [FSMNode("DoSth")]
     public partial class DoSthNode : AsyncEnumFSMNode<MyContext>
     {
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             Console.WriteLine("Do Something...");
             yield return Yield.Delay(500);

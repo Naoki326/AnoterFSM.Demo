@@ -34,7 +34,7 @@ namespace AnEasyFSM
             base.InitBeforeStart();
         }
 
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             // 仅捕获OperationCanceled异常
             // 当触发Pause时，Token发出取消请求，此时若Do发出OperationCanceld异常，则进入暂停状态

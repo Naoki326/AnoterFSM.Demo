@@ -15,7 +15,7 @@ namespace _4_ExecuteFSM.Nodes
     [FSMNode("DoSth")]
     public partial class DoSthNode : AsyncEnumFSMNode<MyContext>
     {
-        protected override async IAsyncEnumerable<object> ExecuteEnumerable()
+        protected override async IAsyncEnumerable<IYieldAction> ExecuteEnumerable()
         {
             Console.WriteLine("Do Something...");
             Console.WriteLine(Context.Data.Message);
